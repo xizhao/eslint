@@ -3045,6 +3045,39 @@ ruleTester.run("indent", rule, {
         {
             code: "x => {}",
             parserOptions: { ecmaVersion: 6 }
+        },
+        {
+            code: unIndent`
+                if (foo)
+                {
+                    bar();
+                }
+            `
+        },
+        {
+            code: unIndent`
+                function foo(bar)
+                {
+                    baz();
+                }
+            `
+        },
+        {
+            code: unIndent`
+                var x = function foop(bar)
+                {
+                    baz();
+                }
+            `
+        },
+        {
+            code: unIndent`
+                var x = (bar) =>
+                {
+                    baz();
+                }
+            `,
+            parserOptions: { ecmaVersion: 6 }
         }
     ],
 
