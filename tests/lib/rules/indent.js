@@ -775,8 +775,8 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 [a, boop,
                     c].forEach((index) => {
-                        index;
-                    });
+                    index;
+                });
             `,
             options: [4],
             parserOptions: { ecmaVersion: 6 }
@@ -785,8 +785,8 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 [a, b,
                     c].forEach(function(index){
-                        return index;
-                    });
+                    return index;
+                });
             `,
             options: [4],
             parserOptions: { ecmaVersion: 6 }
@@ -2995,10 +2995,10 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                [ foop,
+                [ foo,
                   bar ].forEach(function() {
-                    baz;
-                  })
+                  baz;
+                })
             `,
             options: [2, { ArrayExpression: "first", MemberExpression: 1 }]
         },
@@ -3044,6 +3044,73 @@ ruleTester.run("indent", rule, {
         },
         {
             code: "x => {}",
+            parserOptions: { ecmaVersion: 6 }
+        },
+
+        // https://github.com/eslint/eslint/issues/8455
+        {
+            code: unIndent`
+                (
+                    a
+                ) => b => {
+                    c
+                }
+            `,
+            parserOptions: { ecmaVersion: 6 }
+        },
+        {
+            code: unIndent`
+                (
+                    a
+                ) => b => c => d => {
+                    e
+                }
+            `,
+            parserOptions: { ecmaVersion: 6 }
+        },
+        {
+            code: unIndent`
+                (
+                    a
+                ) =>
+                    (
+                        b
+                    ) => {
+                        c
+                    }
+            `,
+            parserOptions: { ecmaVersion: 6 }
+        },
+        {
+            code: unIndent`
+                if (
+                    foo
+                ) bar(
+                    baz
+                );
+            `
+        },
+        {
+            code: unIndent`
+                () =>
+                    ({})
+            `,
+            parserOptions: { ecmaVersion: 6 }
+        },
+        {
+            code: unIndent`
+                () =>
+                    (({}))
+            `,
+            parserOptions: { ecmaVersion: 6 }
+        },
+        {
+            code: unIndent`
+                (
+                    () =>
+                        ({})
+                )
+            `,
             parserOptions: { ecmaVersion: 6 }
         }
     ],
@@ -3728,22 +3795,21 @@ ruleTester.run("indent", rule, {
         {
             code: unIndent`
                 [a, b,
-                c].forEach((index) => {
-                  index;
-                });
-            `,
-            output: unIndent`
-                [a, b,
                     c].forEach((index) => {
                         index;
                     });
             `,
+            output: unIndent`
+                [a, b,
+                    c].forEach((index) => {
+                    index;
+                });
+            `,
             options: [4],
             parserOptions: { ecmaVersion: 6 },
             errors: expectedErrors([
-                [2, 4, 0, "Identifier"],
-                [3, 8, 2, "Identifier"],
-                [4, 4, 0, "Punctuator"]
+                [3, 4, 8, "Identifier"],
+                [4, 0, 4, "Punctuator"]
             ])
         },
         {
@@ -3756,15 +3822,14 @@ ruleTester.run("indent", rule, {
             output: unIndent`
                 [a, b,
                     c].forEach(function(index){
-                        return index;
-                    });
+                    return index;
+                });
             `,
             options: [4],
             parserOptions: { ecmaVersion: 6 },
             errors: expectedErrors([
                 [2, 4, 0, "Identifier"],
-                [3, 8, 2, "Keyword"],
-                [4, 4, 0, "Punctuator"]
+                [3, 4, 2, "Keyword"]
             ])
         },
         {
@@ -6165,19 +6230,19 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                [ foop,
-                  bar ].forEach(function() {
-                  baz;
-                })
-            `,
-            output: unIndent`
-                [ foop,
+                [ foo,
                   bar ].forEach(function() {
                     baz;
                   })
             `,
+            output: unIndent`
+                [ foo,
+                  bar ].forEach(function() {
+                  baz;
+                })
+            `,
             options: [2, { ArrayExpression: "first", MemberExpression: 1 }],
-            errors: expectedErrors([[3, 4, 2, "Identifier"], [4, 2, 0, "Punctuator"]])
+            errors: expectedErrors([[3, 2, 4, "Identifier"], [4, 0, 2, "Punctuator"]])
         },
         {
             code: unIndent`
@@ -6235,6 +6300,59 @@ ruleTester.run("indent", rule, {
                 ; [1, 2, 3].map(baz)
             `,
             errors: expectedErrors([3, 0, 4, "Punctuator"])
+        },
+        {
+            code: unIndent`
+                (
+                    a
+                ) => b => {
+                        c
+                    }
+            `,
+            output: unIndent`
+                (
+                    a
+                ) => b => {
+                    c
+                }
+            `,
+            parserOptions: { ecmaVersion: 6 },
+            errors: expectedErrors([[4, 4, 8, "Identifier"], [5, 0, 4, "Punctuator"]])
+        },
+        {
+            code: unIndent`
+                (
+                    a
+                ) => b => c => d => {
+                        e
+                    }
+            `,
+            output: unIndent`
+                (
+                    a
+                ) => b => c => d => {
+                    e
+                }
+            `,
+            parserOptions: { ecmaVersion: 6 },
+            errors: expectedErrors([[4, 4, 8, "Identifier"], [5, 0, 4, "Punctuator"]])
+        },
+        {
+            code: unIndent`
+                if (
+                    foo
+                ) bar(
+                        baz
+                    );
+            `,
+            output: unIndent`
+                if (
+                    foo
+                ) bar(
+                    baz
+                );
+            `,
+            errors: expectedErrors([[4, 4, 8, "Identifier"], [5, 0, 4, "Punctuator"]])
         }
     ]
 });
