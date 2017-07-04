@@ -5,6 +5,7 @@
 [![Downloads][downloads-image]][downloads-url]
 [![Bountysource](https://www.bountysource.com/badge/tracker?tracker_id=282608)](https://www.bountysource.com/trackers/282608-eslint?utm_source=282608&utm_medium=shield&utm_campaign=TRACKER_BADGE)
 [![Join the chat at https://gitter.im/eslint/eslint](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eslint/eslint?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fxizhao%2Feslint.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fxizhao%2Feslint?ref=badge_shield)
 
 # ESLint
 
@@ -110,7 +111,7 @@ These folks keep the project moving and are resources for help.
 * Brandon Mills ([@btmills](https://github.com/btmills))
 * Gyandeep Singh ([@gyandeeps](https://github.com/gyandeeps))
 * Toru Nagashima ([@mysticatea](https://github.com/mysticatea))
-* Alberto Rodríguez ([@alberto](https://github.com/alberto))
+* Alberto RodrC-guez ([@alberto](https://github.com/alberto))
 * Kai Cataldo ([@kaicataldo](https://github.com/kaicataldo))
 * Teddy Katz ([@not-an-aardvark](https://github.com/not-an-aardvark))
 
@@ -119,7 +120,7 @@ These folks keep the project moving and are resources for help.
 * Mathias Schreck ([@lo1tuma](https://github.com/lo1tuma))
 * Jamund Ferguson ([@xjamundx](https://github.com/xjamundx))
 * Ian VanSchooten ([@ianvs](https://github.com/ianvs))
-* Burak Yiğit Kaya ([@byk](https://github.com/byk))
+* Burak YiDit Kaya ([@byk](https://github.com/byk))
 * Michael Ficarra ([@michaelficarra](https://github.com/michaelficarra))
 * Mark Pedrotti ([@pedrottimark](https://github.com/pedrottimark))
 * Oleg Gaidarenko ([@markelog](https://github.com/markelog))
@@ -190,7 +191,7 @@ Yes. Since we are solving the same problems, ESLint and JSCS teams have decided 
 
 ### So, should I stop using JSCS and start using ESLint?
 
-Maybe, depending on how much you need it. [JSCS has reached end of life](http://eslint.org/blog/2016/07/jscs-end-of-life), but if it is working for you then there is no reason to move yet. We are still working to smooth the transition. You can see our progress [here](https://github.com/eslint/eslint/milestones/JSCS%20Compatibility). We’ll announce when all of the changes necessary to support JSCS users in ESLint are complete and will start encouraging JSCS users to switch to ESLint at that time.
+Maybe, depending on how much you need it. [JSCS has reached end of life](http://eslint.org/blog/2016/07/jscs-end-of-life), but if it is working for you then there is no reason to move yet. We are still working to smooth the transition. You can see our progress [here](https://github.com/eslint/eslint/milestones/JSCS%20Compatibility). Web ll announce when all of the changes necessary to support JSCS users in ESLint are complete and will start encouraging JSCS users to switch to ESLint at that time.
 
 If you are having issues with JSCS, you can try to move to ESLint. We are focusing our time and energy on JSCS compatibility issues.
 
@@ -228,3 +229,7 @@ Join our [Mailing List](https://groups.google.com/group/eslint) or [Chatroom](ht
 [coveralls-url]: https://coveralls.io/r/eslint/eslint?branch=master
 [downloads-image]: https://img.shields.io/npm/dm/eslint.svg?style=flat-square
 [downloads-url]: https://www.npmjs.com/package/eslint
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fxizhao%2Feslint.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fxizhao%2Feslint?ref=badge_large)
